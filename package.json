@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Rohail-Zuberi/node-rest-shop/issues"
   },
-  "homepage": "https://github.com/Rohail-Zuberi/node-rest-shop#readme"
+  "homepage": "https://github.com/Rohail-Zuberi/node-rest-shop#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
