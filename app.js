@@ -16,4 +16,22 @@ app.use(morgan('dev'));
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 
+// Handling requests that get past the above middleware. 
+// Basically error handling
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 404; // Did not find a route 
+  next(error); // Forward the error request instead of the original
+});
+
+// Handles the errors passed forward by above middleware and any other error
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
+  });
+});
+
 module.exports = app;
